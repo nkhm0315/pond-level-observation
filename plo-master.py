@@ -1,6 +1,7 @@
 import cv2
 import time
 import numpy as np
+import math
 
 timer = time.time()
 stopSec = 10
@@ -17,5 +18,16 @@ while True:
         #cv2.imwrite('./data/' + str(time.time) + 'jpg', source)
         img = cv2.Canny(source, 50, 200)
         lines = cv2.HoughLinesP(img, rho=1, theta=np.pi/360, threshold=100, minLineLength=30, maxLineGap=10)
+        if lines is not None:
+            for line in lines:
+                vec = np.array([line[0,0], line[0,1]]) - np.array([line[0,2], line[0,3]])
+                vecAng = np.arctan2(vec[0], vec[1])
+                vecAng = math.degrees(vecAng)
+                if vecAng < -135 and vecAng > -180:
+                    print(line)
+                else:
+                    print('NG')
+        else:
+            print('noLine')
     else:
         time.sleep(1)
