@@ -24,10 +24,7 @@ while True:
                 vecAng = np.arctan2(vec[0], vec[1])
                 vecAng = math.degrees(vecAng)
                 if vecAng < -135 and vecAng > -180:
-                    print(line)
-                else:
-                    print('NG')
-        else:
-            print('noLine')
+                    cv2.line(source,pt1=(line[0,0],line[0,1]),pt2=(line[0,2],line[0,3]),color=(0,0,255),thickness=1)
+                    vecFlg = 1
     else:
         time.sleep(1)
