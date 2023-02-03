@@ -14,5 +14,6 @@ while True:
         cap.release()
         cv2.imshow('Frame', source)
         #cv2.imwrite('./data/' + str(time.time) + 'jpg', source)
+        img = cv2.Canny(source, 50, 200)
     else:
         time.sleep(1)
