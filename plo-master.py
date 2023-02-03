@@ -1,7 +1,6 @@
 import cv2
 import time
 
-cap = cv2.VideoCapture(0)
 timer = time.time()
 stopSec = 10
 
@@ -10,7 +9,9 @@ while True:
             break
     if timer + stopSec < time.time():
         timer = time.time()
+        cap = cv2.VideoCapture(0)
         ret, source = cap.read()
+        cap.release()
         cv2.imshow('Frame', source)
         #cv2.imwrite('./data/' + str(time.time) + 'jpg', source)
     else:
