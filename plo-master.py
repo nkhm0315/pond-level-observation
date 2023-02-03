@@ -13,3 +13,5 @@ while True:
         ret, source = cap.read()
         cv2.imshow('Frame', source)
         #cv2.imwrite('./data/' + str(time.time) + 'jpg', source)
+    else:
+        time.sleep(1)
